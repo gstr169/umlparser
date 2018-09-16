@@ -1,0 +1,5 @@
+{% if 42 is prime %}
+    42 is a prime number
+{% else %}
+    42 is not a prime number
+{% endif %}

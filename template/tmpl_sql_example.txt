@@ -1,0 +1,20 @@
+-ID: int /ID/
+
+
+
+
+
+
+
+<id>UMLClass</id>						-> CREATE TABLE ();
+
+dbo.Fields /Поля/ 						-> dbo.Fields /*Поля*/
+
+-ID: int /ID/ 							-> ID int PRIMARY KEY /*ID*/
+
+-Name: varchar(255) /имя/				-> Name varchar(255) NULL /*имя*/
+
+-Comment: varchar(1000) /комментарий/	-> Comment varchar(1000) NULL /*комментарий*/
+
+-FieldType_id: int /ID типа поля/ 		-> FieldType_id int NULL /*ID типа поля*/
+										-> CONSTRAINT FK_Fields_FieldsTypes FOREIGN KEY (FieldType_id) REFERENCES dbo.FieldsTypes (ID)

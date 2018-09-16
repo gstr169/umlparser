@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>648</x>
+      <y>144</y>
+      <w>189</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>dbo.Fields
+/Поля/
+--
+-ID: int 
+/ID/
+--
+-Name: varchar(255) 
+/имя/
+--
+-Comment: varchar(1000)
+/комментарий/
+--
+-FieldType_id: int
+/ID типа поля/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>189</x>
+      <y>117</y>
+      <w>243</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>dbo.FieldsConnections
+/Связь полей банка/
+--
+-ID: int 
+/ID/
+--
+-Field_id: int 
+/ID поля/
+--
+-Organisation_id: int 
+/ID банка/
+--
+-OrganisationProduct_id: int 
+/ID продукта/
+--
+-IndexBankFile: int
+/номер поля в файле/
+--
+-NameBankFile: varchar(max)
+/имя поля в файле/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>369</x>
+      <y>405</y>
+      <w>207</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>dbo.Organisations
+/Организации/
+--
+-ID: int 
+/ID/
+--
+-FullName: varchar(max) 
+/имя/
+--
+-ShortName: varchar(255) 
+/имя/
+--
+-OldName: varchar(255) 
+/старое имя/
+--
+-OrganisationType_id: int 
+/ID типа организации/
+--
+-Parent_id: int
+/родительская организация/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>18</x>
+      <y>378</y>
+      <w>171</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>dbo.OrganizationsProducts
+/Продукт/
+--
+-ID: int 
+/ID/
+--
+-Name: varchar(255) 
+/имя/
+--
+-Organisation_id: int
+/ID банка/
+--
+-BIN: int
+/БИН продукта/
+--
+-FileType_id: 
+/ID типа файла/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>702</x>
+      <y>396</y>
+      <w>243</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>dbo.FieldsTypes
+/Типы полей/
+--
+-ID: int 
+/ID/
+--
+-Name: varchar(255) 
+/имя/
+--
+-TemplateRE: varchar(max)
+/шаблон в виде регулярного выражения/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>297</x>
+      <y>756</y>
+      <w>180</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>dbo.InputFiles
+/Входящие файлы/
+--
+-ID: int 
+/ID/
+--
+-Organisation_id: int
+/ID банка/
+--
+-Product_id: int
+/ID продукта/
+--
+-CreateDate: datetime
+/дата файла/
+--
+-FileName: varchar(max)
+/имя файла/
+--
+-Flag_id: int
+/ID флага/
+ 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>774</x>
+      <y>306</y>
+      <w>81</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=[FieldType_id]-&gt;
+m2=1
+m1=1
+</panel_attributes>
+    <additional_attributes>40.0;10.0;40.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>405</x>
+      <y>180</y>
+      <w>261</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=[Field_id]-&gt;
+m2=1
+m1=   1
+</panel_attributes>
+    <additional_attributes>30.0;20.0;270.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>144</x>
+      <y>414</y>
+      <w>243</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=[Organisation_id]-&gt;
+m2=1
+m1=        1..n
+</panel_attributes>
+    <additional_attributes>50.0;20.0;250.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>423</x>
+      <y>657</y>
+      <w>99</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=[Organisation_id]-&gt;
+m2=1
+m1=        1..n
+</panel_attributes>
+    <additional_attributes>50.0;110.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>387</x>
+      <y>216</y>
+      <w>126</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=[Organisation_id]-&gt;
+m2=1
+m1=        1..n
+</panel_attributes>
+    <additional_attributes>50.0;20.0;120.0;20.0;120.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>342</y>
+      <w>261</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=[Product_id]-&gt;
+m2=1
+m1=   1
+</panel_attributes>
+    <additional_attributes>240.0;10.0;240.0;50.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>477</y>
+      <w>180</w>
+      <h>297</h>
+    </coordinates>
+    <panel_attributes>lt=[Product_id]-&gt;
+m2=1
+m1=  1..n
+</panel_attributes>
+    <additional_attributes>150.0;310.0;150.0;250.0;60.0;250.0;60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>918</y>
+      <w>198</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>dbo.Flags
+/флаги завершения обработки/
+--
+-ID: int 
+/ID/
+--
+-Name: varchar(255) 
+/имя/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>45</x>
+      <y>702</y>
+      <w>126</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>dbo.FilesTypes
+/Типы файлов/
+--
+-ID: int 
+/ID/
+--
+-Name: varchar(255) 
+/имя/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>117</x>
+      <y>576</y>
+      <w>81</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=[FileType_id]-&gt;
+m2=1
+m1=1..n
+</panel_attributes>
+    <additional_attributes>40.0;10.0;40.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>963</y>
+      <w>144</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=[Flag_id]-&gt;
+m2=1
+m1=  1..n
+</panel_attributes>
+    <additional_attributes>30.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>891</x>
+      <y>153</y>
+      <w>306</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>dbo.Users
+/пользователи/
+--
+-ID: int 
+/ID/
+--
+-UserName: varchar(255) 
+/ФИО/
+--
+-Login: varchar(255) 
+/Логин для входа/
+--
+-Password: varchar(255) 
+/Пароль для входа/
+--
+-Role_id: int
+/ID роли пользователя/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>963</x>
+      <y>432</y>
+      <w>306</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>dbo.LogUsers
+/Лог файл пользователей/
+--
+-ID: int 
+/ID/
+--
+-RecordTime: datetime
+/дата создания записи/
+--
+-IP: binary(4)
+/IP адрес/
+--
+-User_id: int
+/ID пользователя/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1287</x>
+      <y>288</y>
+      <w>171</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>dbo.Roles
+/Роли пользователей/
+--
+-ID: int 
+/ID/
+--
+-Name: varchar(255) 
+/имя/
+--
+-Credentials: varchar(max) 
+/полномочия/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>324</y>
+      <w>135</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=[Role_id]-&gt;
+m2=1
+m1=   1..n
+</panel_attributes>
+    <additional_attributes>30.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1008</x>
+      <y>351</y>
+      <w>63</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=[User_id]-&gt;
+m2=1
+m1=1..n
+</panel_attributes>
+    <additional_attributes>30.0;90.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>666</x>
+      <y>729</y>
+      <w>198</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>dbo.Folders
+/папки/
+--
+-ID: int 
+/ID/
+--
+-Name: varchar(255) 
+/имя/
+--
+-FolderType_id: int
+/ID типа папки/
+--
+-Organisation_id: int
+/ID организации/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>711</x>
+      <y>576</y>
+      <w>153</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>dbo.OrganisationsTypes
+/Типы организаций/
+--
+-ID: int 
+/ID/
+--
+-Name: varchar(255) 
+/имя/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>612</y>
+      <w>99</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=[Parent_id]-&gt;
+m2=1
+m1=    1
+</panel_attributes>
+    <additional_attributes>30.0;40.0;90.0;40.0;90.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>972</x>
+      <y>801</y>
+      <w>126</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>dbo.FoldersTypes
+/Типы папок/
+--
+-ID: int 
+/ID/
+--
+-Name: varchar(255) 
+/имя/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>819</x>
+      <y>828</y>
+      <w>171</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=[FolderType_id]-&gt;
+m2=1
+m1=       1..n
+</panel_attributes>
+    <additional_attributes>50.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>576</y>
+      <w>207</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=[OrganisationType_id]-&gt;
+m2=1
+m1=           1..n
+</panel_attributes>
+    <additional_attributes>60.0;20.0;210.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>531</x>
+      <y>657</y>
+      <w>207</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=[Organisation_id]-&gt;
+m2=1
+m1=       1..n
+</panel_attributes>
+    <additional_attributes>170.0;80.0;170.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
